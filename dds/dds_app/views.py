@@ -57,11 +57,7 @@ def status_edit(request, pk):
             return redirect('status_list')
     else:
         form = StatusForm(instance=status)
-    return render(request,
-                  'dds_app/form.html',
-                  {
-                      'form': form,
-                  })
+    return render(request, 'dds_app/form.html', {'form': form})
 
 
 def transaction_type(request):
@@ -78,18 +74,24 @@ def transaction_type(request):
                   {'form': form, 'transaction_type': transaction_type})
 
 
-def category(request):
+def category_list(request):
     category = Category.objects.all()
+    return render(request,
+                  'dds_app/category_list.html',
+                  {'category': category})
+
+
+def category_edit(request, pk):
+    category = get_object_or_404(Category, pk=pk)
     if request.method == 'POST':
-        form = CategoryForm(request.POST)
+        form = CategoryForm(request.POST, instance=category)
         if form.is_valid():
             form.save()
-            return redirect('category')
+            messages.success(request, 'Запись успешно обновлена!')
+            return redirect('category_list')
     else:
-        form = CategoryForm()
-    return render(request,
-                  'dds_app/category.html',
-                  {'form': form, 'category': category})
+        form = CategoryForm(instance=category)
+    return render(request, 'dds_app/form.html', {'form': form})
 
 
 def subcategory(request):

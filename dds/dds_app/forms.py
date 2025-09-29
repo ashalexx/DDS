@@ -19,8 +19,8 @@ class FinancialRecordForm(forms.ModelForm):
                 'class': 'form-control',
                 'placeholder': 'Выберите статус записи',
                 'required': True
-             }
-             ),
+            }
+            ),
             'created_date': forms.DateInput(
                 attrs={
                     'type': 'date',
@@ -35,10 +35,6 @@ class FinancialRecordForm(forms.ModelForm):
                     'placeholder': 'Введите комментарий (необязательно)'
                 }
             ),
-            # 'status': forms.Select(attrs={'class': 'form-control'}),
-            # 'transaction_type': forms.Select(attrs={'class': 'form-control'}),
-            # 'category': forms.Select(attrs={'class': 'form-control', 'id': 'id_category'}),
-            # 'subcategory': forms.Select(attrs={'class': 'form-control', 'id': 'id_subcategory'}),
             'amount': forms.NumberInput(
                 attrs={
                     'class': 'form-control',

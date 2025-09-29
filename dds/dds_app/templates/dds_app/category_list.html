@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<main class="content">
+        <!-- Главная страница - таблица записей -->
+<section id="home" class="section page-section active">
+    <h1>Категории</h1>
+    <table class="records-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Имя</th>
+                <th>Дата создания</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cat in category %}
+            <tr>
+                <td>{{cat.id}}</td>
+                <td>{{cat.name}}</td>
+                <td>{{cat.created_at}}</td>
+                <td>
+                    <a href="{% url 'form' cat.id %}" class="btn btn-edit" role="button">Редактировать</a>
+                    <a href="#" class="btn btn-delete" role="button">Удалить</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</section>
+
+{% endblock %}
