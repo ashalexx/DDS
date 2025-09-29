@@ -1,0 +1,35 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Управление Движением Денежных Средств</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<header class="header">
+    <nav class="nav-container">
+        <a href="#" class="logo">Управление Движением Денежных Средств</a>
+        <ul class="nav-menu">
+            <li><a href="{% url 'index' %}" class="nav-link {% if request.path == '/index/' %}active{% endif %}" ">Главная</a></li>
+            <li><a href="{% url 'financial_record' %}" class="nav-link {% if request.path == '/index/financial_record/' %}active{% endif %}" onclick="showSection('create')">Создать запись</a></li>
+            <li class="dropdown">
+                <a href="#" class="nav-link dropdown-toggle">Управление справочниками</a>
+                <div class="dropdown-menu">
+                    <a href="{% url 'category_list' %}" class="dropdown-item">Категории</a>
+                    <a href="{% url 'status_list' %}" class="dropdown-item">Статусы</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+{% block content %}
+{% endblock %}
+
+</body>
+
+
+</html>

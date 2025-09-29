@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<body>
+    <main class="content">
+        <!-- Главная страница - таблица записей -->
+        <section id="home" class="section page-section active">
+            <h1>Записи</h1>
+            <table class="records-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Дата создания</th>
+                        <th>Статус</th>
+                        <th>Тип транзакции</th>
+                        <th>Категория</th>
+                        <th>Подкатегория</th>
+                        <th>Сумма</th>
+                        <th>Комментарий</th>
+                        <th>Действия</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for f in financial_record %}
+                    <tr>
+                        <td>{{f.id}}</td>
+                        <td>{{f.created_date}}</td>
+                        <td>{{f.status}}</td>
+                        <td>{{f.transaction_type}}</td>
+                        <td>{{f.category}}</td>
+                        <td>{{f.subcategory}}</td>
+                        <td>{{f.amount}}</td>
+                        <td>{{f.comment}}</td>
+                        <td>
+                            <a href="#" class="btn btn-edit" role="button">Редактировать</a>
+                            <a href="#" class="btn btn-delete" role="button">Удалить</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script>
+        // Функция для переключения между секциями
+        function showSection(sectionId) {
+            // Скрыть все секции
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Показать выбранную секцию
+            document.getElementById(sectionId).classList.add('active');
+
+            // Обновить активную ссылку в навигации
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        // Обработчик формы
+        document.getElementById('create-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Запись успешно добавлена!');
+            // Здесь можно добавить логику отправки данных
+        });
+    </script>
+</body>
+{% endblock %}

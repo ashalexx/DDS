@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+ <section class="section page-section">
+            <h1>Редактировать запись</h1>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-add">Сохранить</button>
+                    <button type="reset" class="btn btn-clear">Очистить</button>
+                </div>
+            </form>
+        </section>
+{% endblock %}
